@@ -1,6 +1,7 @@
 package example;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,9 @@ import example.domain.Pet;
 import example.domain.Pet.PetType;
 import example.repositories.OwnerRepository;
 import example.repositories.PetRepository;
+
+import io.micronaut.context.ApplicationContext;
+import io.micronaut.inject.BeanDefinition;
 import io.micronaut.context.event.StartupEvent;
 import io.micronaut.runtime.Micronaut;
 import io.micronaut.runtime.event.annotation.EventListener;
@@ -37,7 +41,11 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Micronaut.run(Application.class);
+        ApplicationContext context = Micronaut.run(Application.class);
+		Collection<BeanDefinition<?>> beanDefinitions = context.getAllBeanDefinitions();
+		for (BeanDefinition<?> beanDefinition: beanDefinitions) {
+			System.out.println(beanDefinition.getBeanType());
+		}
     }
 
     @EventListener

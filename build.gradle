@@ -30,6 +30,7 @@ configurations {
 ext {
     micronautDataVersion = "1.0.0.M3"
     micronautVersion = "1.2.4"
+    apacheOlingoVersion = "2.0.11"
 }
 
 dependencies {
@@ -48,6 +49,14 @@ dependencies {
     implementation "io.micronaut:micronaut-runtime"
     implementation "io.micronaut:micronaut-http-client"
     implementation "io.micronaut:micronaut-http-server-netty"
+
+    implementation "org.apache.olingo:olingo-odata2-core:$apacheOlingoVersion", {
+        exclude group:'javax.ws.rs', module:'javax.ws.rs-api'
+    }
+    implementation "org.apache.olingo:olingo-odata2-jpa-processor-core:$apacheOlingoVersion"
+    implementation "org.apache.olingo:olingo-odata2-jpa-processor-ref:$apacheOlingoVersion", {
+        exclude group:'org.eclipse.persistence', module:'eclipselink'
+    }
 
     implementation "io.micronaut.data:micronaut-data-hibernate-jpa:$micronautDataVersion", {
         exclude group:'io.micronaut.configuration', module:'micronaut-hibernate-jpa-spring'
