@@ -37,4 +37,8 @@ $ ./mvnw package
 $ native-image --no-server -cp target/example-jpa-0.1.jar
 ```
 
+## OData References
+* [Intro to OData with Olingo](https://www.baeldung.com/olingo)
+* [ODataServlet.java](https://github.com/apache/olingo-odata2/blob/master/odata2-lib/odata-core/src/main/java/org/apache/olingo/odata2/core/servlet/ODataServlet.java)
+
  
